@@ -1,0 +1,144 @@
+*{
+    margin:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+.container{
+    width: 450px;
+    height: 450px;
+    outline: 2px solid;
+    margin: 60px auto;
+
+    /* Para usar flexbox vamoa requerir un contenedor
+    Usamos display: flex en el contenendor padre
+    Con esto ya estamos usando flex box
+
+    Si observas ahora los elementos se ponen uno al lado del otro
+
+    Ahora este elemento es un flex container
+    Y los que están dentro o los hijos se vuelven flex items
+
+    Si agregas más elementos dentro del contenedor van a adoptar el mismo comportamiento 
+    */
+    display: flex;
+    /*flex-direction: column;*/
+    flex-wrap: wrap; 
+    justify-content: center;
+    /*align-items: center;*/
+    align-content: space-around;
+}
+
+/* Main Axis (eje) en flexbox 
+
+Si no agregas ninguna caracteristica el ancho y alto 
+de los elementos será el predeterminado por el mismo elemento.
+
+El main axis es el eje o dirección principal y la cross es perpendicular a esta,
+entonces si el main axis es en fila el cross axis será en columna
+
+Si usamos row (O lo dejamos por defecto)el main axis va de izquiera a derecha y el cross axis de arriba hacia abajo
+Si aplicamos el reverse entonces sería al contrario en el main axis el cross seguiría igual de arriba hacia abajo
+
+Si usamos column ahora el main axis seria de arriba hacia abajo y el cross de izquierda a derecha
+En el reverse seria al contrario y el cross serguiría igual
+
+Solo cambia el main axis por eso es tan importante ya que es el eje principal.
+
+flex-direction: La dirección de los elementos, puede ser filas (row) o columnas (column), por defecto es row
+
+*/
+
+/*El flujo de flexbox
+El contenedor se estiran pero no se desbordan del contenedor
+Nunca rebasan el contenedor, cuanod la suma de los elementos
+da un tamaño mayoir al contenedor, estos elementos dejan de crecer.
+
+
+Para gestionar este comportamiento usamos
+Flex wrap: por defecto viene con el valor nowrap;
+que sería el comportamiento descrito antes.
+
+Si le ponemos wrap, le indicamos que si los elementos no caben
+en el flex container cree una nueva linea dependiendo de la flex-direction
+
+En conclusión no permite que se salga de su contenedor pero podemos
+gestionar si al sobrepasar el tamaño crea nuevas lineas o deja de crecer cada elemento
+
+Otra opción es poner wrap-reverse: En este casoempezarian a desbordar los elementos la final del cross axis
+
+*/
+
+/*Alineación en el Main axis
+Lo hacemos con justify content
+
+NOs ayuda en caso de que haya espacio disponible en este eje, nos sirve para column y row
+Por lo que podemos alinearlos
+-Desde el inicio del Main axis con flex-start que es la que tiene por defecto
+-Desde el final con flex-end
+-Distribuido en el espacio equitativamente
+con el primero elemento pegado a un borde y el último al otro borde con space-between
+-Distribuido en el espacio equitativamente pero sin estar pegado a los lados con space-around
+-Distribuido equitativamente  sin espacios con space-evenly
+-Centrado todos juntos sin espacio entre ellos con center
+*/
+
+/*Alineación en el cross axis
+
+Esto lo hacemos con la propiedad align-items
+-stretch: Estira a los elementos por todo el cross axis, este es lo que tiene por defecto
+Si no definimos un alto en el elemento item lo estirará hasta el final del contenedor
+Si hay un tamaño definido pondrá cada item del alto definido con height o line-height
+-flex-start manda los elementos al principo del cross axis
+-flex-end lo mismo pero al contrario
+-center, se centra en el cross axis (con align-items y justify content podemos centrar en ambos ejes
+-baseline hace que los elemento se alinean con referencia a la linea base del texto
+
+
+Otra propiedad es align-content:
+Esto lo usamos cuando tenemos varias lineas de elementos en el cross axis porque se desbordan de su contenedor debido a su tamaño
+ y podemos usar los siguientes valores
+-stretch Hace que se alarguen y queden juntos (junto con flex-wrap:wrap).
+-flex-start empaqueta todo y lo manda al inicio del cross axis, recuerda que align-content solo funciona 
+en el cross axis
+-flex-end empaqueta y manda al final
+-center empaqueta y lo centra
+-space-around
+-space evenly
+-space between
+
+Estos se comporta igual que con la propiedad justify content pero con el cross axis
+
+cuando tengamos varias cossas en el cross axis debemos usar align content ya que con este no quedan espacios entre elementos
+en el cross axis, mientras que si usamos align-items quedará el espacio
+*/
+
+/**FLEX y CHROME
+
+En chrome con el inspector de elementos podemos trabajar con flex para ver como quedaría
+directamente en el navegador, igual como cuando cambiamos atributos css desde ahí mismo*/
+
+.element{
+    width: 200px;
+    /*height: 100px;*/
+    line-height: 100px; 
+    text-align: center;
+    background-color: slateblue;
+    color:#fff;
+    font-size: 2rem;
+}
+.element_1{
+    background-color: coral;
+}
+.element_2{
+    background-color: lightgreen;
+}
+.element_3{
+    background-color: lightblue;
+}
+.element_4{
+    background-color: lawngreen;
+}
