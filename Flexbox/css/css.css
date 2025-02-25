@@ -121,17 +121,68 @@ en el cross axis, mientras que si usamos align-items quedará el espacio
 En chrome con el inspector de elementos podemos trabajar con flex para ver como quedaría
 directamente en el navegador, igual como cuando cambiamos atributos css desde ahí mismo*/
 
+
+/* FLEX ITEMS
+Los flex items son los elementos hijos
+
+Propiedades de los items
+
+Order
+
+order:  Permite ordenar los elementos por número, cambiando su posición
+
+El que definamos como 0 se pondrá al inicio sin importar donde esté posicionado originalmente
+0 es el valor por defecto con ese valor queda organizado de acuerdo a como está en el HTML
+-1 es menor que 0 por lo que se podria detrás del 0 el elemento
+Los elementos seria -2 -1 0 1 2 3 etc., así se organizarian por número
+
+
+
+Flex-grow:
+Se encarga de distribuir el espacio sobrante entre los items
+
+Si pones un flex-grow de 1 ahora cada elemento tendría
+una fracción de ese espacio disponible, por lo que llenarian el espacio faltante
+El valor de flex grow por defecto es 0
+
+Podemos hacer que un elemento tenga más del espacio definiendo un flex-grow en el elemento directamente
+ASí si todos los elementos tienen un flex-grow de 1 y le pongo flex-grow de 
+  auno ese tendrá un mayor pedazo del espacio.
+
+flex-basis:  
+Cuando tenemos un elemento que de por sí es más grande que los demás
+Pero queremos que sea del mismo tamaño que el resto, podemos usar flex-basis:0
+YA que por ser de mayoor tamaño al usar flex grow: 1 a secas no quedaría del mismo tamaño
+
+*/
+
+
 .element{
-    width: 200px;
+    /* width: 200px; */
     /*height: 100px;*/
     line-height: 100px; 
     text-align: center;
     background-color: slateblue;
     color:#fff;
     font-size: 2rem;
+    order:0;
+    /*Con flexgrow repartimos el espacio sobrante entre los elementos
+    con el valor 1 se reparte por partes iguales, da igual el valor*/
+    flex-grow:1;
+    /*Con flex basis hacemos que
+    los elementos sean del mismo tamaño
+    sin importar si alguno es más grande que los demás
+    por defecto*/
+    flex-basis:0;
 }
 .element_1{
     background-color: coral;
+    /* Al poner este order este elemento pasaría al final ya que los demás tienen 0 */
+    order:1;
+    /*Al poner un flex grow mayor en este elemento 1
+    observamos que este elemento toma una porción mayor
+    del espacio disponible*/
+    /* flex-grow: 4; */
 }
 .element_2{
     background-color: lightgreen;
