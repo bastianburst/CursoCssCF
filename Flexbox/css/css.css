@@ -1,13 +1,13 @@
-*{
-    margin:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    box-sizing: border-box;
 }
 
-body{
-    font-family:Arial, Helvetica, sans-serif;
+body {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
-.container{
+.container {
     width: 450px;
     height: 450px;
     outline: 2px solid;
@@ -26,8 +26,8 @@ body{
     */
     display: flex;
     /*flex-direction: column;*/
-    flex-wrap: wrap; 
-    justify-content: center;
+    /* flex-wrap: wrap;  */
+    justify-content: flex-start;
     /*align-items: center;*/
     align-content: space-around;
 }
@@ -153,43 +153,92 @@ flex-basis:
 Cuando tenemos un elemento que de por sí es más grande que los demás
 Pero queremos que sea del mismo tamaño que el resto, podemos usar flex-basis:0
 YA que por ser de mayoor tamaño al usar flex grow: 1 a secas no quedaría del mismo tamaño
+Poner auto significa que es su estado normal.
+
+
+flex-shrink:
+Es lo contrario a flex grow, determina el factor para que un elemento se encoja
+En lo casos en los que no hay espacio suficiente o faltante
+repartimos el espacio en fracciones
+flex-shrink por defecto de todos los elementos es 1
+S ponemos el valor en 0 quetariamos la flexibilidad a los elementos por lo que entonces estos se desbordarían
+
+De flex-grow y flex-shrink es de donde se denomina que flexbox es flexible precisamente
 
 */
 
+/**Alineamineto en los Flex items
 
-.element{
-    /* width: 200px; */
-    /*height: 100px;*/
-    line-height: 100px; 
+Las propiedades grow shronk y basis se pueden definir en un
+solo llamado con el propiedad flex
+flex: Primero el grow, segundo shrink y de ultimo el basis
+Ejemplo: flex:1 1 auto;
+Si ponemos flex:1 seria como poner grow en 1shitnk en 1 y basis en 0
+
+Otras formas de alinear los items::after
+
+
+align-self: te permite alinear un solo elemento, hace lo mismos que align items
+pero solo para un elemento, en el corss axis
+si además pones hight auto junto con align.self stretch, se estiraria ocupando todo el cross axis
+
+
+Nota:
+NO hay una propiedad para hacer esto en el main axis con flexbox
+Justify-self se usa para Css grid
+
+Nota 2:
+Hay un truco para hacerlo pero usanod margenes con margin-left/right: auto
+igual podemos hacer ese truco com margin-top/bottom
+Incluso podemos centrar usando margin:auto; aplicando margen a todas las direcciones
+
+*/
+.element {
+    width: 200px;
+    height: 100px;
+    line-height: 100px;
     text-align: center;
     background-color: slateblue;
-    color:#fff;
+    color: #fff;
     font-size: 2rem;
-    order:0;
+    order: 0;
     /*Con flexgrow repartimos el espacio sobrante entre los elementos
     con el valor 1 se reparte por partes iguales, da igual el valor*/
-    flex-grow:1;
+    /* flex-grow:1; */
     /*Con flex basis hacemos que
     los elementos sean del mismo tamaño
     sin importar si alguno es más grande que los demás
-    por defecto*/
-    flex-basis:0;
+    por defecto, si lo ponemos en 0 serian del tamaño que tienen por defecto si no has defnido un width en css*/
+    /* flex-basis:1;  */
+
+    /* flex-shrink: 1; */
+    /*Esto es igual a definirlos por separado*/
+    flex: 1 1 0;
 }
-.element_1{
+
+.element_1 {
     background-color: coral;
     /* Al poner este order este elemento pasaría al final ya que los demás tienen 0 */
-    order:1;
+    order: 1;
     /*Al poner un flex grow mayor en este elemento 1
     observamos que este elemento toma una porción mayor
     del espacio disponible*/
     /* flex-grow: 4; */
 }
-.element_2{
+
+.element_2 {
     background-color: lightgreen;
+    /* flex-shrink: 2; */
+    /* Con esto mandariamos este item al fondo del cross axis */
+    align-self: stretch;
+    /* Si usamos el valor stretch + el heicght auto el elemento se estira ocupando todo el cross axis */
+    height: auto;
 }
-.element_3{
+
+.element_3 {
     background-color: lightblue;
 }
-.element_4{
+
+.element_4 {
     background-color: lawngreen;
 }

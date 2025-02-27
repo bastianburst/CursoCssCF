@@ -1,0 +1,56 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-family: 'Arial';
+}
+
+
+/* Con la propiedad first-of-type podemos aplicar
+ un valor solo al primer elemento 
+ 
+ Ejemplo: link:first-of-type{
+
+}
+ 
+ */
+.nav{
+    display: flex;
+    flex-direction: column;
+    width: max-content;
+    margin: 80px auto;
+    border: 1px solid;
+    /**Es una propeidad conocida como espaciador
+    Nos permite generar un espacio entre elementos o filas
+
+    Es un short word para definir dos propiedades
+    row-gap horizontal o filas
+    column-gap vertical o columnas
+
+
+    Al definir solo con gap el primero valor es apra filas y el segundo apra columnas
+    gap: 10px 5px;
+    Esta propiedad la soportan la mayoría de navegadores y también se usa en CSS Grid
+    
+    */
+    gap: 50px 10px; 
+}
+
+.link{
+    text-decoration: none;
+    background-color: steelblue;
+    padding: .8em 1.5em;
+    color: #fff;
+    
+}
+
+
+@media (min-width:600px){
+    .nav{
+        flex-direction: row;
+    }
+
+    
+}
