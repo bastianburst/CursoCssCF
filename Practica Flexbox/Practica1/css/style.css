@@ -1,0 +1,184 @@
+
+/* Aquí definimos un root que es la raiz del documento
+Aquí podemos definir custom properties que podemos llamar
+luego más abajo, funcionan como variables, por lo que podemos cambiar sus valores luego.
+como las fuentes y los colores
+Ya habiendo importado las fuentes de google fonts o puesto los links
+en nuestro HTML la defiimos acá como font1 para open sans
+y font 2 para poppins.
+
+ Lo mismo hacemos para los colores.
+*/
+:root{
+    --violet: hsl(257, 40%, 49%);
+    --soft-magenta: hsl(300, 69%, 71%);
+
+    --font1: 'Open Sans', sans-serif;
+    --font2: 'Poppins', sans-serif;
+
+    --padding-container: 60px 0;
+}
+
+/* Puedes buscar iconos para Usar tambien en el sitio "Boxicons"
+
+POdemos ir al sitio copiar el código del color, 
+venir a nuestro prroyecto, crear un archivo con extensión .svg
+y poner el codigo que copiamos de la pagina. 
+así podemos hacer uso de imagenes .svg en nuestros proyectos
+De este modo podemos incluso editar el color y tamaño de los .svg editando el codigo directamente
+*/
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+body{
+    /* De esta forma llamamos las variables definidas en root */
+    font-family: var(--font1);
+}
+
+.hero{
+    background-color: var(--violet);
+    /* position: relative; */
+    /* A hero le damos una posición relative para luego posicionar a un subelemento con absolute */
+}
+
+/*con hero::before lo que hacemos es posicionar algo inmediatamente antes
+que la etiqueta hero, en este caso pondemos una imagen de fondo con posición absolute
+Para que ignore a su sucesor y se ponga en la misma posición */
+.hero::before{
+    /* contenido vacio ponemos content; ""*/
+    content: "";
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 400px;
+    background-image: url('../images/bg-mobile.svg');
+    background-repeat: no-repeat;
+    background-size: 100% 400px;
+}
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+    overflow: hidden;
+    max-width: 1200px;
+    padding: var(--padding-container);
+    /*Al container le ponemos el position relative para que estos elementos
+    Sobrepasen al subelemento de hero al que le pusismos absolute*/
+    position: relative;
+}
+
+.nav{
+    --padding-container: 30px 0;
+}
+
+.nav__logo{
+    width: 150px;
+    display: block;
+}
+
+.hero__container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.hero__img{
+    max-width: 350px;
+    width: 100%;
+    display: block;
+    margin: 0 auto;
+}
+
+.hero__texts{
+    margin: 3.5em 0;
+    color: #fff;
+    text-align: center;
+}
+
+.hero__title{
+    font-size: 1.7rem;
+    font-family: var(--font2);
+}
+
+.hero__paragraph{
+    line-height: 1.5;
+    margin: 1.2em 0 1.7em;
+}
+
+.hero__cta{
+    display: inline-block;
+    color: var(--violet);
+    background-color: #fff;
+    text-decoration: none;
+    padding: 1em 6em;
+    border-radius: 2em;
+    box-shadow: 0 1px 4px rgb(0, 0, 0, .5);
+}
+
+.hero__contact{
+    display: flex;
+    gap: 1.5em;
+}
+
+.hero__link{
+    text-decoration: none;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero__icon{
+    width: 23px;
+}
+
+/* Creamos los media quieres para desktop ya que esta vez empezamos diseñando mobile first */
+@media (min-width:768px) {
+    .hero{
+        background-color: var(--soft-magenta);
+    }
+
+
+    .hero::before{
+        height: 100%;
+        background-image: url('../images/bg-desktop.svg');
+        background-size: 100% 100%;
+    }
+
+    .hero__container{
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        --padding-container: 20px 0 60px;
+    }
+
+    .hero__picture{
+        flex-basis: 45%;
+    }
+
+    .hero__img{
+        max-width: unset;
+    }
+
+
+    .hero__texts{
+        flex-basis: 50%;
+        text-align: left;
+    }
+    
+    .hero__title{
+        font-size: 2rem;
+    }
+
+    .hero__contact{
+        margin-left: auto;
+    }
+}
