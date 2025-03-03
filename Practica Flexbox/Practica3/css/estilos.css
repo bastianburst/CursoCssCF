@@ -20,10 +20,13 @@
 body {
     font-family: var(--font1);
 }
-
+/* La clase container está presente en cada sesión, aqui definiremos el tamaño maximo
+de nuestro contenido */
 .container {
     width: 90%;
     max-width: 1200px;
+    /*Aqui definimos el maximo, esta clase está puesta 
+    en cada sesión del sitio */
     overflow: hidden;
     margin: 0 auto;
     padding: var(--padding-container);
@@ -303,6 +306,12 @@ body {
     margin: auto;
 }
 
+/* Aunque se haga mucho más grande la pantalla el contenedor 
+va a contener al contenido porque tiene un width maximo */
+
+/*Primero diseñamos para movil luego con los mediaqueries hacemos 
+cambios para pantallas mas grandes pantallas mayores a 768px */
+
 @media (min-width: 768px) {
 
     .hero {
@@ -340,9 +349,14 @@ body {
 
     .hero__input {
         min-width: 160px;
+        /* Le damos un flex grow de 1 
+        para que este elemento ocupe todo el espacio disponible */
         flex-grow: 1;
     }
 
+    /* Al siguiente elemento de ponemos el grow de 0
+De este modo el input crece cuando cambiamos de tamaño de pantalla
+pero cerce hasta el maximo de su contenedor, el cualtiene un width fijo */
     .hero__input--cta {
         margin-top: 0;
         flex-grow: 0;
@@ -443,8 +457,6 @@ body {
 
 
     .footer__social {
-        margin: 0 ;
+        margin: 0;
     }
-
-
 }
