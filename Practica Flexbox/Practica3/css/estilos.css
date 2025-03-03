@@ -1,6 +1,7 @@
-:root{
-    --very-dark-blue: hs1(243,87%,12%);
-    --desatured-blue: hs1(238, 22%, 44%) --bright-blue: hsl(224, 93%, 58%);
+:root {
+    --very-dark-blue: hsl(243, 87%, 12%);
+    --desaturated-blue: hsl(238, 22%, 44%);
+    --bright-blue: hsl(224, 93%, 58%);
     --moderate-cyan: hsl(170, 45%, 43%);
     --light-grayish-blue: hsl(240, 75%, 98%);
     --light-gray: hsl(0, 0%, 75%);
@@ -11,21 +12,20 @@
     --padding-container: 90px 0;
 }
 
-*{
-    margin:0;
-    box-sizing:border-box;
+* {
+    margin: 0;
+    box-sizing: border-box;
 }
 
-body{
+body {
     font-family: var(--font1);
 }
 
-.container{
+.container {
     width: 90%;
     max-width: 1200px;
     overflow: hidden;
-    margin:0 auto;
-    /*Aquí asignamos el valor de padding que definimos en el root*/
+    margin: 0 auto;
     padding: var(--padding-container);
 }
 
@@ -33,8 +33,6 @@ body{
     display: flex;
     align-items: center;
     gap: 1.1em;
-    /*Aquí cambiamps el valor del padding-container
-    parecido a como hacemos con las variables en javascript*/
     --padding-container: 40px 0;
 }
 
