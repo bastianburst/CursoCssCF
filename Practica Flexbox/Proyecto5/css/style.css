@@ -1,4 +1,5 @@
 :root {
+    /* Custome properties */
     --dark-violet: hsl(256, 26%, 20%);
     --grayish-blue: hsl(216, 30%, 68%);
     --very-dark-violet: hsl(270, 9%, 17%);
@@ -22,6 +23,8 @@ body {
 }
 
 .container {
+    /*Aquí indicamos que siempre el valor sea el 90%
+    pero que no pase de 1200px*/
     max-width: 1200px;
     width: 90%;
     overflow: hidden;
@@ -66,8 +69,16 @@ body {
     padding-top: 3em;
     background-color: #000;
     gap: 3em;
+    /* Clip plath sirve para
+    Crea una región de recorte que
+     establece qué parte de un elemento
+      debe mostrarse. 
+      Las partes que están dentro de 
+      la región se muestran, mientras que
+       las que están fuera se ocultan. */
     clip-path: circle(0% at top left);
-
+    /*Definiendo que al dar click en este botón
+haga una transición hacemos que funcione el efecto clip path*/
     transition: .4s clip-path;
 }
 
@@ -99,7 +110,14 @@ body {
 .hero__main {
     width: 100%;
 }
+/* NO siempre se necesita poner position absolute, 
+para hacer el truco, como por ejemplo en este caso
 
+EN ESTE CASO NO USAMOS POSISITON ABSOLUTE
+PORQUE LO QUE PRETENDE ES QUE EL ELEMENTO A INSERTAR HAGA PARTE DEL FLUJO DEL DOCUMENTO
+POR ESO PONEMOS ORDER:1 PARA QUE CAMBIE DE POSICIÓN MAS ADELANTE
+AL PONER POSICIÓN ABSOLUTE ELEEMENTO SE SALE DEL FLUJO NORMAL Y SE POSICIONA
+POR ENCIMA EN BASE A LA EQTIQUETA PADRE QUE TENGA.*/
 .hero__main::before {
     content: "";
     display: block;
@@ -113,6 +131,7 @@ body {
 .hero__texts {
     width: 90%;
     margin: 0 auto;
+    /* Aquí estariamos diciendo que el padding seria de 80px arriba y abajo, y de 0 en los costados */
     padding: 80px 0;
     text-align: center;
 }
@@ -120,10 +139,12 @@ body {
 .title {
     font-size: 2.5rem;
     font-family: var(--font1);
+    /* separación vertical del texto */
     letter-spacing: 3px;
 }
 
 .hero__paragraph {
+    /**Alto de linea es decir el espacio entre cada salto de linea*/
     line-height: 1.5;
     margin-top: 1em;
 }
@@ -149,6 +170,8 @@ body {
 }
 
 .title--different::before {
+    /* Aqui hicimos una linea que estará 
+    inmediatamante despues de el elmento tittle_different */
     content: "";
     position: absolute;
     top: -5px;
@@ -161,6 +184,7 @@ body {
     height: 1px;
 }
 
+/* Lo ponemos en columnas los elementos */
 .different__items {
     margin-top: 3.5em;
     display: flex;
@@ -201,6 +225,12 @@ body {
     text-align: center;
 }
 
+/* Otra vez el truco de poner poisición relative a secas 
+Luego usar ::befire para ponerle un position absolute
+Content; "" y poner lo que queiras, un fondo, una linea, una imagen superpuesta
+etc.
+En este caso ponemos z-index: -1 para indicar que este elemento tiene
+que estar detrás del texto no super puesto*/
 .find__container::before {
     content: "";
     position: absolute;
@@ -236,6 +266,7 @@ body {
     display: block;
 }
 
+/* COntenedor de los elementos del footer, las barras de navegación */
 .footer__media {
     display: flex;
     gap: 1em;
@@ -268,13 +299,14 @@ body {
     color: var(--dark-grayish-violet);
 }
 
+/* Rresponsive desing */
 @media (min-width:768px) {
 
     .nav__links:target {
-        clip-path:unset;
+        clip-path: unset;
     }
 
-    .nav__links:target ~ .nav__hamburguer--last {
+    .nav__links:target~.nav__hamburguer--last {
         display: none;
     }
 
@@ -288,7 +320,7 @@ body {
         padding-top: 0;
         background-color: #fff;
         clip-path: unset;
-        transition:unset;
+        transition: unset;
     }
 
 
@@ -317,11 +349,34 @@ body {
         justify-content: space-between;
     }
 
+    /* 
+    .hero__main::before {
+        content: "";
+        display: block;
+        width: 100%;
+        height: 370px;
+        background-image: url('../images/image-intro-mobile.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+
+    Observa los cambios que le hacemos a esta clase
+    content y display los quitamos para que quedne igua
+    modificamos wisth, height
+    y ponemos order para cambiar la posucuón de la imagen
+    Además cambiamos la imagen de mobil por la desitinada a desktop
+    que tiene dimensiones diferentes
+     */
+
     .hero__main::before {
         width: 48%;
         height: 530px;
+        /*CAMBIAMOS LA IMAGEN DE MOBILE POR LA DE DESKTOP*/
         background-image: url('../images/image-intro-desktop.jpg');
         order: 1;
+        z-index: 0;
+        /* Le ponemos el order para que la imagen se vaya a la derecha 
+        EN EL FLUJO DEL DOCUMENTO*/
     }
 
     .hero__texts {
@@ -357,11 +412,14 @@ body {
     }
 
     .different__items {
+        /* Cambiamos a row en lugar de columnas para desktop */
         flex-direction: row;
         gap: 2em;
     }
 
     .different__item {
+        /* Como el elemento del emedia es mas grande
+        USamos flex 1 en esta clase para que sean del mismo tamaño */
         flex: 1;
     }
 
@@ -389,12 +447,15 @@ body {
 
     .find__container {
         display: flex;
+        /* Mandar los elementos a las esquinas */
         justify-content: space-between;
+        /* Alinear los elementos al centro en el cross axis */
         align-items: center;
         text-align: left;
     }
 
     .find__container::before {
+        /* En desktop cambiamos la imagen */
         background-image: url('../images/bg-pattern-how-we-work-desktop.svg');
     }
 
@@ -418,10 +479,46 @@ body {
     }
 
     .footer__nav {
+        /* El footer nav es en columna por lo que el cross axis es horizontal
+        Con align items flex stars hariamos que los elementos se alineen a la izquierda
+        que es el resultado deseado */
         width: 20%;
         align-items: flex-start;
     }
 
 
+    /*Tarea, poner las imagenes en el elemento con before y after*/
+    .hero {
+        position: relative;
+    }
 
+    .hero::before {
+        content: "";
+        position: absolute;
+        background-image: url("../images/bg-pattern-intro-right-desktop.svg");
+        width: 100%;
+        height: 530px;
+        top: 5rem;
+        right: 0;
+        background-repeat: no-repeat;
+        background-position: right;
+        z-index: 1;
+
+
+    }
+
+    .hero::after {
+        content: "";
+        position: absolute;
+        background-image: url("../images/bg-pattern-intro-left-desktop.svg");
+        width: 100%;
+        height: 530px;
+        top: 25rem;
+        right: 0;
+        background-repeat: no-repeat;
+        background-position: left;
+        z-index: 1;
+
+
+    }
 }
