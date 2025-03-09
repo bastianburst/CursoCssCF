@@ -23,7 +23,10 @@
         <figure class="nav__figure">
           <img src="./images/logo.svg" class="nav__logo">
         </figure>
-
+        <!-- creamos un id para los enlaces con el id open
+ más abajo pones un a que haga referencia a este div
+ Vamos a hacer un menú desplegable para la versión mobile
+ con css, lo más recomendable es hacerlo con javascript -->
         <div class="nav__links" id="open">
           <!-- Si escribes  a*4 se crearan 4 etiquetas a, puedes aplicarlo a cualquier etiqueta -->
           <a href="#" class="nav__link">How we work</a>
@@ -31,11 +34,13 @@
           <a href="#" class="nav__link">Account</a>
           <a href="#" class="nav__link nav__link--cta">View plans</a>
         </div>
-
+        <!-- Icono hamburguesa que activará la animación css para el menú -->
+        <!-- Este elemento debe referenciar al id open por eso ponemos un #         -->
         <a href="#open" class="nav__hamburguer">
           <img src="./images/icon-hamburger.svg" class="nav__icon">
         </a>
-
+        <!-- Icono de cerrar -->
+        <!-- Aquí ponemos solo el # porque debe referenciar a otro elemento que no sea open -->
         <a href="#" class="nav__hamburguer nav__hamburguer--last">
           <img src="./images/icon-close.svg" class="nav__icon">
         </a>
@@ -142,7 +147,7 @@
       </section>
 
       <section class="footer__navigation">
-<!-- UN navegador en el footer? -->
+        <!-- UN navegador en el footer? -->
         <nav class="footer__nav">
 
           <a href="#" class="footer__link footer__link--first">Our company</a>

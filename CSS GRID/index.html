@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,8 +8,18 @@
     <title>CSS GRID</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
+    <!-- ¿Qué es CSS Grid? 
+Funciona como una cuadricula en la que ponemos elementos.
+
+Es un sistema de cuadriculas, CSS Grid Layout, el sistema de diseño más 
+poderoso disponible en CSS.  Esto grcias a su sistema bidimensional. 
+Puede manejar tanto columnas como filas, flexbox en en gran medida unidimensional
+
+NO es que ahora flexbox sea obsoleto, ambas herramientas se complementan
+ -->
     <div class="grid">
 
         <div class="item item-1">#1</div>
@@ -17,9 +28,31 @@
         <div class="item item-4">#4</div>
         <div class="item item-5">#5</div>
         <div class="item item-6">#6</div>
+        <div class="item item-7">#7</div>
+        <div class="item item-8">#8</div>
 
+        <!--Igual que en flexbox se necesita un contenedor
+En este caso se llama grid-container
 
+También tenemos Grid-tiems que son los hijos directos del grid container
+
+En css grid tabajamos en un sistema bidimensional, osea que tenemos
+filas y columnas, rows filas horizontales de izquierda a derecha)
+ y column columnas verticales de arriba hacia abajo
+ 
+ 
+ Cuando estas filas y colunmnas se interceptan se crea una Grid cell o celda
+ Las grid-cells son la parte más pequeña de la Grid, por defecto cada grid-item se va a posicionar en una celda de la grid
+ Y la suma de todas estas celdas es la GRID
+ 
+ Lineas o grid lines, las cuadriculas estan compuestas por lineas 
+ verticales column-grid-line y horizontales row-grid-line
+
+ La regla general es que Si tienes 5 columnas tendrás una linea más
+ Lo mismo con las filas
+ -->
     </div>
 
 </body>
+
 </html>

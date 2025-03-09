@@ -1,18 +1,102 @@
-*{
+* {
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: 'Arial';
 }
 
-.grid{
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    grid-template-rows: repeat(4,1fr);
+/* con display grid activamos un grid container y lo que está
+    dentro se vuelve un grid item; 
+    
+    Si usamos display inline-grid este contendor s comportaria como linea
+    es decir que los elementos contiguos se posicionaran al lado
+    SI usamos display grid se comporta como si pusieramos display block
+    por lo que ocupará toda la linea y el siguuiente elemento
+    quedará debajo
+    
+    POr defecto css grid tiene las siguientes propiedades:
+    
+    Grid-autoflow: row Por defecto se pondrán fila
+    justify-items: stretch Se estira por todo el acnho horizontalmente
+    ALign items: stretch  Se estira por todo el alto
+    
+    Los items tiene un high:auto osea que la altura de 
+    los elemtos se define por su contenido*/
 
-    /* grid-auto-flow:column dense; */
+/*Definir columnas:
+    
+    Esto lo hacemos con la propiedad grid-template-columns
+    Esto acetpa cualquier cantidad de medida permitida en css
+    cada valor que coloquemos será una columna
+    
+    Aqui observamos que si tenemos 3 columnas tenemos 4 grid lines*/
+.grid {
+
+    display: grid;
+    /* grid-auto-flow: row; Por defecto */
+    grid-template-columns: 60px 5rem 20% 25%;
+    /*Como en este ejemplo definimos 3 columnas
+    significa que solo tenemos espacio para 3 elementos
+    como tenemos 6 lo que hace css grid es crear otra fila
+    Esto es porque estamos en un flujo en fila que es el que tiene por defecto*/
+    /* NO queremos que las filas se creen implicitamente
+    para esto usaremos la propiedad grid-template-rows */
+    grid-template-rows: 20% 20% 20% 25%;
+
+    /* PAra crear varias columnas no tenemos que poner un montón de valores, 
+    usamos la función repeat (cantidad, medida);
+    Así tendrias n columnas o filas del mismo tamaño-
+    
+    Si quiero agregar otra columna de un valor diferente lo ponemos despues
+    del repeat Ejm: grid-template-columns: repeat(4,1fr)  40%;*/
+
+    /* También puedo decirla que se repita dos veces una cantidad con un valor
+      grid-template-columns: repeat(2,1fr 10%);
+      Esto seria equivalente a poner: 1fr 10% 1fr 10%
+      Es decir que es patrón de poner un elemento con 1fr y otro con 10% se repitiria n veces*/
+
+    /* 
+    UNIDADES FLEXIBLES DE CSS GRID:
+    fr = es una unidad flexible (fracción)
+    se usa para representar las fracciones del espacio disponible
+    que tenemos en nuestra cuadricula */
+
+    grid-template-columns: repeat(4, 1fr);
+    /* Estamos diciendo que reparta el espacio en 4 fracciones de forma igual
+    Sin dejar ningún espacio ya que tomará todo */
+    grid-template-rows: repeat(4, 1fr);
+    /* Con esto creamos una grid de 4*4 que ocupa todo el grid-container */
+
+    /* VALOR AUTO
+
+Hay un valor auto en css grid 
+grid-template-columns: repeat(4, auto);
+Aunque a simple vista tiene el mismo efecto que usar fr
+en realidad no es lo mismo.
+
+Auto, Primero le dará a cada track el tamaño minimo para que exista
+Este se da por el contenido del elemento, en este caso es el mismo
+por eso los grids quedan del mismo tamaño, pero si hubiera una caja con más texto
+ese elemento sería más grande que los otros, luego repartiria lo demás equitativamente
+
+fr por otro lado reparte el mismo espacio sin importar el tamaño de los elementos; */
+
+    /* Ejemplo2: grid-template-columns: auto repeat(3, auto);
+Aquí le decimos que cree una columna en auto (se ajusta al contenido) 
+dandole el tamñao minimo para existir, y luego cree 3 con fr
+osea que lo que hará es que el resto de espacio será
+ repartido equitativamente sin importar el tamaño en 3 partes */
+
+
+ /* 
+ POSICIONADO POR LINEAS CSS GRID
+ Una vez definidas las filas y columnas ya está completa la grid */
+
+/* POR AQUí */
+
+     /* grid-auto-flow:column dense; */
     /* grid-template-columns:repeat(2,60px);    
     grid-template-rows:repeat(2,1fr); */
 
@@ -28,13 +112,13 @@ body{
     height: 500px;
 }
 
-.item{
+.item {
     order: 0;
     color: #fff;
     font-size: 2.5rem;
 }
 
-.item-1{
+.item-1 {
     background-color: slateblue;
     /* 
     grid-column: line-start / line-end;
@@ -49,11 +133,11 @@ body{
     grid-row:1/4;
     */
 
-   
+
 
 }
 
-.item-2{
+.item-2 {
     /* grid-area:row-start / column-start / row-end / column-end ; */
 
     background-color: darkmagenta;
@@ -63,27 +147,35 @@ body{
     /* grid-column:span 3;
     grid-row:span 2; */
 
-    
+
 }
 
-.item-3{
+.item-3 {
     background-color: tomato;
     /* grid-row:2;
     grid-column: 1/3; */
 }
 
-.item-4{
+.item-4 {
     /* grid-column: 1/3;
     grid-row: 3; */
     background-color: midnightblue;
 }
 
-.item-5{
-    
+.item-5 {
+
     background-color: seagreen;
 }
 
-.item-6{
+.item-6 {
     background-color: crimson;
 }
 
+.item-7 {
+
+    background-color: rgb(64, 28, 122);
+}
+
+.item-8 {
+    background-color: rgb(131, 133, 36);
+}
