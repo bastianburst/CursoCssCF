@@ -1,25 +1,72 @@
-*{
+* {
     margin: 0;
     box-sizing: border-box;
 }
 
-body{
+body {
     font-family: 'Arial';
 }
 
-.grid{
+/* NOMBRANDO LINEAS EN GRID
+
+Vamos a 
+organizar los elemento por nombre de linea en lugar de por 
+número de linea
+
+Las lineas las definimos entre []*/
+
+.grid {
     display: grid;
-    /* gap: 1em; */
-    /* -start -end */
+    /* grid-template-columns: 1fr 1fr; */
+
+    /* Esto equivale a lo que tenemos en la linea anterior */
+
     /* grid-template-columns:
-    [header-start footer-start] 1fr 1fr [header-end] 1fr [footer-end]
-    ;
-    grid-template-rows: 
-    1fr [header-start]  1fr [header-end footer-start] 1fr [footer-end]
-    ; */
-    /* grid-template-columns:repeat(3, [colum-start] 1fr [colum-end]);
-    grid-template-rows: repeat(4, [fila-start] 1fr [fila-end]); */
+        [linea-inicial] 1fr [linea-final] 1fr [linea-final-grid];
+    grid-template-rows:
+        [linea-inicial] 1fr [linea-final] 1fr [linea-final-grid]; */
+
+    /* Obviamente estas lineas ya existen por defecto pero lo
+    que hemos hecho es nombrarlas;
+    Este proceso de nombrar la slineas debe hacerse manualmente
+    por lo que no podriamos usar repeat */
+
+    /*UNa vez nombras las lineas como posicionamos los elementos?
     
+    vamos a los items y definimo que x item va a ir desde la linea
+    x a la linea y con grid column o grid row (Ver Item1)*/
+
+    /*CREANDO AREAS IMPLICITAS
+    
+    Debos darle nombres semanticos a las lineas
+    como header, footer, etc.  NO es recomendable usar
+    cualquier nombre que se nos ocurra, aunque esto depende
+    de lo que necesitemos hacer.
+    
+    Lo recomendado es usar el sufijo star y end para indicar el inicio
+    y final de las lineas (-start -end) */
+
+    /*Aquí usamos nombres semanticos:*/
+    /*Podemos nombrar otras lineas en un solo corchete
+    (Ver element 1 y 2)
+    
+    Esto nos ayuda a crear areas de forma implicita
+    */
+    grid-template-columns:
+        [header-start footer-start] 1fr 1fr [header-end] 1fr [footer-end];
+    grid-template-rows:
+        1fr [header-start] 1fr [header-end footer-start] 1fr [footer-end];
+    
+    /* NOMBRANDO LINEAS CON REPEAT
+    
+    Por aquí
+
+    */
+
+
+        /* grid-template-columns:repeat(3, [colum-start] 1fr [colum-end]);
+    grid-template-rows: repeat(4, [fila-start] 1fr [fila-end]); */
+
     /* auto-fill */
 
     /* justify-content: space-evenly; */
@@ -44,8 +91,8 @@ body{
     ; */
 
     /* auto-flow */
-    
-    grid:auto-flow dense 50px 1fr /  1fr 1fr 1fr ;
+
+    /* grid:auto-flow dense 50px 1fr /  1fr 1fr 1fr ; */
 
     width: 90%;
     height: 600px;
@@ -53,38 +100,69 @@ body{
     margin: 20px auto;
 }
 
-.item{
+.item {
     font-size: 2rem;
     color: #fff;
     text-align: center;
 }
 
-.item-1{
+.item-1 {
+
+    /* Definimos de donde a donde irá el item 1
+    igual a como haciamos con los números pero esta 
+    vez usamos el nombre de la linea */
+
+    /* grid-column: linea-inicial / linea-final-grid; */
+
+    /* Vemos como ahora el elemento 1 ocupa dos espacios
+    y los demás se despalazan en función a su posición 
+    
+    Nota: podemos usar todas las demas convenciones que hemos aprendido
+    usar -1, span, auto etc.*/
+
+    /*Definimos esto con nombres semanticos*/
+
     /* grid-column: header-start / header-end; */
+
+    /* Tambien podemos referenciar por nombre de area
+    no solo por nombre de linea */
+    /* Si asigamos el header o el footer se posicionará ahí 
+    Esa es la ventaja de usar nombres semanticos, con solo hacer referencia a header
+    ya css grid toma los valore y puede trabajar*/
+
+    grid-area: header;
+
     /* grid-row: header-start / header-end; */
+
     /* grid-column: colum-start 2 / colum-end 3;
+
     grid-row:fila-start/fila-start 3; */
-    /* grid-area: header; */
+
+
+
     background-color: slateblue;
 
 }
 
-.item-2{
-    /* grid-column: main-start / main-end; */
-    /* grid-row: main-start / main-end; */
+.item-2 {
+    /*Definimos que el elemento 2 vaya del inicio al final 
+    de las lineas footer*/
+    grid-column: footer-start / footer-end; 
+    grid-row: footer-start / footer-end; 
+    /* Tambien podemos hacerlo de esta manera para definir que ocupe todo el espacio del nombre foooter */
     /* grid-area: footer; */
     background-color: crimson;
 
     /* place-self: align justify */
 }
 
-.item-3{
+.item-3 {
     /* grid-column: sidebar-start / sidebar-end; */
     /* grid-row: sidebar-start / sidebar-end; */
     background-color: coral;
 }
 
-.item-4{
+.item-4 {
     /* grid-column: juan-start / juan-end; */
     /* grid-row: juan-start / juan-end; */
     background-color: indigo;

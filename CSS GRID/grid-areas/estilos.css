@@ -7,11 +7,39 @@ body{
     font-family: 'Arial';
 }
 
+/* GRID AREAS INTRODUCCIÓN 
+
+Podemos definir areas para que los elementos
+se posiciones en ellas
+
+con grid-tempaletes-areas: "";
+*/
+
 .grid{
     display: grid;
     gap: 1em;
     grid-template-columns: 1fr;
     grid-template-rows:repeat(4,1fr);
+    /* Definimos cuatro areas con nombres especificos
+    son filas y columnas que se crean automaticamente
+    si ponemos varios elementos entre comillas
+    esos se asignarian a la fila especificada
+    
+    grid-template-areas: "Sebas Gal Brito"
+    EN el caso de hacer esto las demás filas deben tener la misma 
+    cantidad de columnas porque se reomperian las areas
+    estas areas solo deben ser cuadradas o rectangulares
+    
+    NO puedes dejar areas vacias en caso de que no tengas nada
+    qué poner, puedes poner un punto, con el punto le digo que esa area
+    estará vacia
+    
+    Por último no pueden haber dos areas que se llamen igual
+    
+    Si queremos que un elemento se ponga primero
+    podemos hacerlo con z-index
+    el que tenga el z-index más alto se pondrá en primer lugar*/
+
     grid-template-areas: 
     "header"
     "main"
@@ -36,7 +64,6 @@ body{
 
 .header{
     grid-area: header;
-  
     background-color: crimson;
 }
 
@@ -47,7 +74,7 @@ body{
 
 .sidebar{
     
-    grid-area: header;
+    grid-area: sidebar;
     background-color: purple;
 }
 
@@ -58,11 +85,10 @@ body{
 
 
 
-@media (min-width: 700px) {
+@media (min-width: 800px) {
     .grid{
         grid-template-columns: repeat(4,1fr);
         grid-template-rows: repeat(4,1fr);
-        
         grid-template-areas: 
         "header header header header"
         "main   main   main   sidebar"
