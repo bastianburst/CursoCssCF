@@ -52,48 +52,248 @@ Las lineas las definimos entre []*/
     
     Esto nos ayuda a crear areas de forma implicita
     */
-    grid-template-columns:
+
+    /*grid-template-columns:
         [header-start footer-start] 1fr 1fr [header-end] 1fr [footer-end];
     grid-template-rows:
-        1fr [header-start] 1fr [header-end footer-start] 1fr [footer-end];
-    
+        1fr [header-start] 1fr [header-end footer-start] 1fr [footer-end];*/
+
     /* NOMBRANDO LINEAS CON REPEAT
     
-    Por aquí
+ Debemos nomrbar cada linea manualmente, pero si por
+ alguna razón queremos nombrar todas las lineas con el mismo
+ nombre, podremos usar repeat (aunque no le veo sentido)
+    */
 
+    /* Con esta sentencia decimos que se repita 3 veces
+    lo que está entre parentesis (Vamos a Item1) */
+
+    /*grid-template-columns: repeat(3, [colum-start] 1fr [colum-end]);*/
+
+    /* grid-template-rows: repeat(4, [fila-start] 1fr [fila-end]);  */
+
+
+    /* MIX CONTENT Y MAX CONTENT
+    
+    Valores dinamicos apra la creaciónd etracks en css GRid
+
+    Unos de estos valores son
+    max-content y min-content
+    
+    Lo usamos para definir el tamaño de columnas y filas
+
+    Lo podemos usar en grid-template-columns y " " rows y en grid-auto-rows y auto-columns
+    Pero se usa más en grid-template-columns y grid-auto-columns
+    */
+
+    /* grid-template-columns: max-content min-content; */
+
+    /* lo que decimos com max-content es que la columna medirá todo el ancho que necesite
+    entre más contendio tenga el elemento más tamaño tendrá
+
+    Min-content ocupa el espacio minimo que necesita para existir, o el minimo posible
+    si se declara en fila representa el alto minimo, si es columna el ancho minimo */
+
+
+    /* FIT-CONTENT Y MINMAX
+    
+    Nos permitirán crear valores dinamicos para nuestros tracks
+    */
+
+    /* grid-template-columns: fit-content(300px); */
+
+    /*
+    Fit-content Es una combinación entre min-content y max-content
+    El contenedor de comportará como si fuera max-content
+    pero una vez que rebasa los 300px pasa a comportarse como si fuera min-content 
+
+    El valor que ponemos entre parentesis pasa a marcar ese limite en el cual
+    cambia de comportamiento
+    */
+
+    /* MINMAX 
+    Se usa para marcar tamaños de tracks ya
+    sean implicitos (crea por defecto)
+    o explicitos (creado por nosotros)
+
+    Define un tamaño minimo para el track
+    y uno maximo, lleva dos valores uno
+    para el tamaño minimo y otro para el maximo
+
+    grid-template-columns:minmax(valormin, valormax)
+    */
+
+    /* grid-template-columns:minmax(min-content, 1fr); */
+
+    /* Aquí le decimos que el tamaño minimo será con la propiedad
+    min-conent osea el minimo necesario
+    y el maximo será de 1fr */
+
+    /* grid-template-columns:minmax(50px, 200px); */
+
+    /*En este caso nunca será menos a 50px 
+    y tampoco sobrepasará los 200px*/
+
+    /* grid-template-columns: repeat (4, minmax(50px, 1fr)); */
+
+    /* Creamos 4 columnas dond el minimo son 50px y el maxio 1fr
+
+    Esto se puede usar para 
+    grid-template-rows, 
+    grid-template-columns, 
+    grid-auto-columns y 
+    grid-auto-rows */
+
+
+    /* AUTO FIT AUTO FILL
+
+    Nos sirve para crear tantas filas y cpolumnas como el espacio 
+    nos lo permite con auto-fill
+    */
+
+    /* grid-template-columns: repeat(auto-fill, 100px); */
+    /*Con auto-fill se crea la cantidad de columnas que quepan en el
+    espacio de la grid del tamaño especificado, entre más grande
+    o se agrande el contenedor más columnas creará, llegando
+    incluso a crear filas o columnas vacías
+    
+    si el contenedor en este ejemplo fuera de 150px, no podria
+    crear dos columnas por lo que solo crearía una sola*/
+
+    /* grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); */
+    /*El unico problema es que autofill podria crear más columnas que los 
+    elementos que tengo disponibles.
+
+    Para estos casos podemos usar AUTOFIT
+    auto-fit funciona de la misma manera que auto-fill con la
+    diferencia de que autofit solo crear las columnas que vamos a necesitar
+    y las vacias las va a eliminar
+    */
+
+    /* grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); */
+    /*De esta forma creamos columnas con autofit
+    Si hacemos el cambio en esta linea de codigo
+    vemos que con autifut crea 4 columnas
+    con autofill crea 5 la ultima vacía ya que solo tenemos 4 elementos*/
+
+    /* gap:1em; */
+
+    /*ALINEACIÓN DE GRID
+    
+    Al igual que en flexbox podemos usar propiedades para alineación
+    funcionan solo si hay espacio disponible, por columnas o filas*/
+
+    /* grid-template-columns: repeat(2, 150px); */
+
+    /* grid-template-rows: repeat(2, 150px); */
+
+    /* justify-content: space-evenly;  */
+
+    /* align-content: space-evenly;  */
+
+    /*Shorthand de las dos anteriores place-content
+     se le pasan los dos argumentos, si pasamos solo uno
+     lo aplica para ambos*/
+
+    /* place-content: center space-around; */
+
+    /* place-content: space-between; */
+
+    /* ALINEACIÓN DE LOS GRID ITEMS
+    
+    Ver item 1...
+    
     */
 
 
-        /* grid-template-columns:repeat(3, [colum-start] 1fr [colum-end]);
-    grid-template-rows: repeat(4, [fila-start] 1fr [fila-end]); */
-
-    /* auto-fill */
-
-    /* justify-content: space-evenly; */
-    /* align-content: space-evenly; */
-
-    /* place-content:center; */
-
     /* justify-items: center; */
+
     /* align-items: center; */
-    /* place-items: align justify; */
 
-    /* grid-template: grid-template-rows / grid-template-column; */
-    /* grid-template: 
-    "area1 area2 area3" 1fr
-    "area1 area2 area3" 3fr / 30px 100px 1fr
-    ; */
+    /*El shorthand de align-items y justify-items
+    es place-items.
+    Le pasamos los dos valores correspondientes
+    el primero align y el segundo para justift
+     place-items: align justify; */
 
-    /* grid-template: 
-    [row-1] "area1 area2 area3" 1fr [row-2]
-            "area1 area2 area3"  3fr [row-3]
-    / [col-1] 30px 100px 1fr [col-2]
-    ; */
+    /* place-items: end center; */
 
-    /* auto-flow */
 
-    /* grid:auto-flow dense 50px 1fr /  1fr 1fr 1fr ; */
+    /* SHORTHANDS DE GRID
+    
+    Grid-template es el sorthand de:
+    grid-template: grid-template-rows / grid-template-column */
 
+
+    grid-template: 1fr 1fr 80px / 100px 30% 1fr 1fr;
+    /* Aquí creamos una grid de 4 filas y 3 columnas con diferentes medidas */
+
+
+    grid-template: repeat(2, 1fr)/repeat(2, 1fr);
+
+    /*Creación de lineas*/
+
+    grid-template: [linea1] 1fr [linea2] 1fr [lineafinal] / [linea1] 1fr [linea2] 1fr [lineafinal];
+
+
+    /*Tambien podemos definir areas*/
+
+    grid-template:
+        "area1 area2 area3" 1fr
+        "area1 area2 area3" 3fr / 30px 100px 1fr;
+
+    /*Esto equivale a poner
+    estas tres lineas por separado*/
+
+    grid-template-areas:
+        "area1 area2 area3"
+        "area1 area2 area3";
+    grid-template-rows: 1fr 3fr;
+    grid-template-columns: 30px 100px 1fr;
+
+    /* Ahora definiremos nombres de linea a esos elementos anteriores */
+
+    grid-template:
+        [row-1] "area1 area2 area3" 1fr [row-2] "area1 area2 area3" 3fr [row-3] / [col-1] 30px 100px 1fr [col-2];
+
+    /* Equivale a poner 
+    lo que es más facil de leer */
+
+    grid-template-areas: "area1 area2 area3"
+        "area1 area2 area3";
+    grid-template-rows: [row-1]1fr [row-2] 3fr [row-3];
+    grid-template-columns: [col-1] 30px 100px 1fr [col-2];
+
+    /*Es cuestión de gustos pero se recomienda
+    hacerlo así porque es más facil de leer*/
+
+    /*EL ultimo shorthand es la propiedad GRID
+    que funciona casi igual a grid-template
+
+    grid nos permite definir el flujo en nuestra grid con la propiedad
+    auto-flow
+
+    Lo unico es que debemos definir si vamos a 
+    definir lo implicito o lo explicito, no podemos hacer
+    ambas en una misma sentencia con grid, elige
+    hacerlo de una de las dos maneras
+    */
+
+    /*Aquí definimos lo implicito agregando la propiedad
+    auto-flow podemos definir
+    La propiedades que no pongamos como autoflow por ejemplo
+    quedarian con su valor por defecto*/
+
+    grid: auto-flow dense 50px 1fr /  1fr 1fr 1fr ;
+
+    /* grid: repeat(2, 1fr) / repeat(2, 1fr); */
+
+    /* CONCLUSIÓN
+
+    Es más sencillo usar propiedad por propiedad
+    facilita la lectura, pero si prefieres usar el shorthand */
+
+    
     width: 90%;
     height: 600px;
     outline: 3px solid;
@@ -104,6 +304,7 @@ Las lineas las definimos entre []*/
     font-size: 2rem;
     color: #fff;
     text-align: center;
+    /* height: min-content; */
 }
 
 .item-1 {
@@ -130,30 +331,55 @@ Las lineas las definimos entre []*/
     Esa es la ventaja de usar nombres semanticos, con solo hacer referencia a header
     ya css grid toma los valore y puede trabajar*/
 
-    grid-area: header;
+    /* grid-area: header; */
+
+
 
     /* grid-row: header-start / header-end; */
 
-    /* grid-column: colum-start 2 / colum-end 3;
 
-    grid-row:fila-start/fila-start 3; */
+    /* (Nombrando lineas con repeat)
+    Vamos desde la column 2 hasta la 3
+    y en filas desde fila-start hasta fila-star 3 */
+
+    /* grid-column: colum-start 2 / colum-end 3; */
+
+    /* grid-row: fila-start/fila-start 3; */
 
 
 
     background-color: slateblue;
+
+    /* (Alineación de los grid items) 
+    align-self: stretch, start, end, center;
+    justify-self: stretch, start, end, center;
+
+    Shorthand
+
+    place-self: align justify;
+    
+    Ver item 2*/
 
 }
 
 .item-2 {
     /*Definimos que el elemento 2 vaya del inicio al final 
     de las lineas footer*/
-    grid-column: footer-start / footer-end; 
-    grid-row: footer-start / footer-end; 
+
+    /* grid-column: footer-start / footer-end;  */
+    /* grid-row: footer-start / footer-end;  */
+
     /* Tambien podemos hacerlo de esta manera para definir que ocupe todo el espacio del nombre foooter */
     /* grid-area: footer; */
+
     background-color: crimson;
 
-    /* place-self: align justify */
+
+    /* place-self: start stretch; */
+
+    /* Le decimos que align es star y justify stretch */
+
+
 }
 
 .item-3 {
