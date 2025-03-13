@@ -28,11 +28,16 @@ body{
     margin: 0 auto;
     display: grid;
     align-content: center;
+    /* Con la propiedad autofit hacemos que en desktop
+    se pongan los grid items uno al lado del otro sin usar mediaqueries,
+    según el ejemplo en moviles debe verse uno sobre otro
+    pero en desktop uno al lado del otro
+    funcionaria igual con autofill */
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 
     animation: fade .8s .6s both ease-in;
 }
-
+/* Animación fade */
 @keyframes fade {
     0%{
         opacity: 0;
@@ -76,7 +81,7 @@ body{
     margin-bottom: 1.8em;
     color: var(--dark-grayish-blue);
 }
-
+/* Creamos un flex-box dentro de un grid */
 .main__price{
     display: flex;
     align-items: center;
@@ -93,7 +98,8 @@ body{
     font-family: 'Montserrat', sans-serif;
     text-decoration: line-through;
 }
-
+/* Acá volvemos a hacer otra grid interna dentro del flexbox
+también puedes poneruna grdi dentro de otra como hacemos acá */
 .main__cta{
     display: grid;
     grid-auto-flow: column;
@@ -113,6 +119,7 @@ body{
     content: url('../images/icon-cart.svg');
 }
 
+/* En lo demaiqueries modificamos solo los border-radius */
 @media (min-width:667px) {
     .main__bg{
         border-radius: 10px 0 0 10px;
