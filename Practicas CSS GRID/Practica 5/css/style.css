@@ -30,19 +30,32 @@ body {
     background-position: center;
     background-size: cover;
 }
+/* Animación de menú */
+
+/* Los custom properties se pueden crear en cualquier clase
+no solo en :root y puedes asignar cualquier valor 
+en este caso asiganamos el valor none para nuestra propiedad custom 
+--close.  Esto ayuda a leer mejor el codigo al parecer */
 
 .nav {
     --close: none;
     --hamburguer: block;
     --transform: translate(-100%);
-
+/*la función translate hará que se traslade hacia la izquierda*/
     display: grid;
     grid-template-columns: max-content max-content;
     grid-template-areas: "logo active";
     justify-content: space-between;
     padding: 45px 0 0;
 }
+/*EL pseudoclase target es para activar algo cuando alguien
+seleccione esta etiqueta
+en este caso cuando la perona haga click o toque la etiqueta
+nav va a desaparecer el menú hamburguesa, va a aparecer el botón de cerrar
+y el menú se va a trasladar
 
+Cuandot tocamos el nav referencia a la etiqueta nav comov vemos en el html
+pero el botón x de cerrar referencia a algo vacío represetnado con #*/
 .nav:target {
     --close: block;
     --hamburguer: none;
@@ -65,6 +78,7 @@ body {
     display: var(--hamburguer);
 }
 
+/* De esta forma llamamos las custome properties */
 .nav__close {
     display: var(--close);
 }
@@ -72,6 +86,7 @@ body {
 .nav__img {
     display: block;
 }
+/*Hasta aquí*/
 
 .nav__links {
     position: absolute;
@@ -150,9 +165,11 @@ body {
 .gallery {
     display: grid;
     row-gap: 3em;
+    /* row gap indica que el gap solo aplica en filas */
 }
 
 .gallery__cta {
+    /*Shorthand para align-self y justify-self*/
     place-self: center;
     order: 1;
     color: var(--black);
@@ -174,7 +191,12 @@ body {
     display: grid;
     grid-template-areas: "show";
 }
+/* Este elemento before al not ener una positicon abosulte o fixed
+pasa a ser un grid item más, por eso le damos valores,
+entra a ser parte del flujo de la grid */
 
+/*Linear gradiente es una mascara que se le pone para 
+que se vea más oscuro, creamos una imagen con degradado*/
 .gallery__picture::before {
     content: "";
     z-index: 10;
@@ -186,6 +208,8 @@ body {
 }
 
 .gallery__picture::after {
+    /* con la función attr asignamos el valor que está en data-message 
+    en el html */
     content: attr(data-message) "";
     z-index: 10;
     grid-area: show;
@@ -262,6 +286,8 @@ body {
     }
 
     .nav__links {
+        /*Ponemos unset para decir que quitamos el valor que habia antes
+     el position pasa de absolute a unset igual que los otros valores*/
         transform: unset;
         position: unset;
         min-height: unset;
@@ -285,7 +311,8 @@ body {
 
 
     /* leader */
-
+/*Dfinimos la grid y luego de donde a donde van los elementos en ella
+por ehemplo leader-picture irá de la lina 1 a la 5 en columnas y filas*/
     .leader {
         min-height: 350px;
         grid-template-columns: repeat(7, 1fr);
@@ -302,7 +329,8 @@ body {
         height: 100%;
         object-fit: cover;
     }
-
+/*COmo su nombre lo dice css funciona el cascada
+por lo que no es necesairo poner el z-index para que se sobreponga*/
     .leader__texts {
         text-align: left;
         background-color: var(--white);
@@ -315,7 +343,11 @@ body {
         font-size: 2.8rem;
     }
 
-    /* gallery */
+    /* gallery 
+    Con grid podemos definir una grid y luego dedcir de donde a donde
+    va cada elemento dentro de la grid
+    POr ejemplo gallery__cta va desde la linea a¿2 a la 3 en colunas
+    y de la 1 a la 2 en filas*/
 
     .gallery {
         grid-template-columns: repeat(2, auto);
@@ -331,6 +363,11 @@ body {
     .gallery__container {
         grid-column: 1/-1;
         grid-row: 2/3;
+        /* generamos columnas dinamicas que se agregan de manera automatica
+        con auti-fit y minmax, de este modo entre más crezca el contenedor
+        que crecerá en cuanto más se agrande la pantalla, creará más
+        grid elements, permitiendo que haya más colunas en cuanto más crezca
+        el grid */
         grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     }
 
@@ -343,6 +380,8 @@ body {
     /* footer */
 
     .footer__container {
+        /* creamos dos cñolumnas y dos areas 
+        para distribuir elementos */
         grid-template-columns: repeat(2, max-content);
         grid-template-areas: 
         "logo social"
@@ -352,7 +391,7 @@ body {
         align-items: center;
        grid-auto-rows: max-content;
     }
-
+/*ASignamos las areas*/
     .footer__logo{
         grid-area: logo;
         justify-self: start;

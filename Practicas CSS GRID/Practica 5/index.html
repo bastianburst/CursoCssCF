@@ -54,7 +54,7 @@
     </div>
 
   </header>
-  
+
   <main class="main">
 
     <section class="leader container">
@@ -120,38 +120,41 @@
 
         </picture>
 
-        
-      <picture class="gallery__picture" data-message="From up aboveVR">
+        <!-- EL atributo data-message lo vamos a llamr dessues en css
+        con la clase gallery__picture -->
+        <picture class="gallery__picture" data-message="From up aboveVR">
+          <!-- Aqui incluimos una imagen deiferente para desktop, usando source e incluyendo
+media quieries en el html 
+Cuando estpe en desktop la imagen va a cambiarse automaticamente sin hacer nada en css-->
+          <source srcset="./images/desktop/image-from-above.jpg" class="gallery__img" media="(min-width: 768px)">
 
-        <source srcset="./images/desktop/image-from-above.jpg" class="gallery__img" media="(min-width: 768px)">
+          <img src="./images/mobile/image-from-above.jpg" class="gallery__img">
 
-        <img src="./images/mobile/image-from-above.jpg" class="gallery__img" > 
+        </picture>
 
-      </picture>
+        <picture class="gallery__picture" data-message="Pocket borealis">
 
-      <picture class="gallery__picture" data-message="Pocket borealis">
+          <source srcset="./images/desktop/image-pocket-borealis.jpg" class="gallery__img" media="(min-width: 768px)">
 
-        <source srcset="./images/desktop/image-pocket-borealis.jpg" class="gallery__img" media="(min-width: 768px)">
+          <img src="./images/mobile/image-pocket-borealis.jpg" class="gallery__img">
 
-        <img src="./images/mobile/image-pocket-borealis.jpg" class="gallery__img" > 
+        </picture>
 
-      </picture>
+        <picture class="gallery__picture" data-message="The curiosity">
 
-      <picture class="gallery__picture" data-message="The curiosity">
+          <source srcset="./images/desktop/image-curiosity.jpg" class="gallery__img" media="(min-width: 768px)">
 
-        <source srcset="./images/desktop/image-curiosity.jpg" class="gallery__img" media="(min-width: 768px)">
+          <img src="./images/mobile/image-curiosity.jpg" class="gallery__img">
 
-        <img src="./images/mobile/image-curiosity.jpg" class="gallery__img" > 
+        </picture>
 
-      </picture>
+        <picture class="gallery__picture" data-message="Make it fisheye">
 
-      <picture class="gallery__picture" data-message="Make it fisheye">
+          <source srcset="./images/desktop/image-fisheye.jpg" class="gallery__img" media="(min-width: 768px)">
 
-        <source srcset="./images/desktop/image-fisheye.jpg" class="gallery__img" media="(min-width: 768px)">
+          <img src="./images/mobile/image-fisheye.jpg" class="gallery__img">
 
-        <img src="./images/mobile/image-fisheye.jpg" class="gallery__img" > 
-
-      </picture>
+        </picture>
 
       </div>
 
@@ -204,9 +207,9 @@
 
     </section>
   </footer>
- 
 
-  
+
+
 
 </body>
 
